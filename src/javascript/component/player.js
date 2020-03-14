@@ -5,14 +5,15 @@ let maxCol = 15;
 let maxRow = 8;
 const randomCol = () => Math.floor(Math.random() * (maxCol - min + 1)) + min;
 const randomRow = () => Math.floor(Math.random() * (maxRow - min + 1)) + min;
+
+let computePosition = () => {
+  return { offset: 64, index: 1 };
+};
 class Player {
   constructor(id, img, damage = 10, health = 100, weapon = {}) {
     this.id = id;
     this.img = img;
-    this.damage = damage;
-    this.health = health;
-    this.hasWeapon = false;
-    this.weapon = weapon;
+
     this.position = {
       x: 0,
       y: 0
@@ -52,33 +53,20 @@ class Player {
     this.init();
   }
   moveLeft() {
-    this.position.x -= offset;
-    this.indexPosition.col -= 1;
+    this.position.x -= computePosition().offset;
+    this.indexPosition.col -= computePosition().index;
   }
   moveUp() {
-    this.position.y -= offset;
-    this.indexPosition.row -= 1;
+    this.position.y -= computePosition().offset;
+    this.indexPosition.row -= computePosition().index;
   }
   moveRight() {
-    this.position.x += offset;
-    this.indexPosition.col += 1;
+    this.position.x += computePosition().offset;
+    this.indexPosition.col += computePosition().index;
   }
   moveDown() {
-    this.position.y += offset;
-    this.indexPosition.row += 1;
-  }
-  updatePlayerProperties(damage) {
-    this.damage = damage;
-  }
-  updatePlayerWeapon(weapon) {
-    this.weapon = weapon;
-  }
-  updateWeaponState() {
-    this.hasWeapon = true;
-  }
-  updateHealth(health) {
-    console.log(health);
-    this.health -= health;
+    this.position.y += computePosition().offset;
+    this.indexPosition.row += computePosition().index;
   }
 }
 

@@ -31,13 +31,10 @@ const drawGrid = () => {
     for (let j = 0; j <= 15; j++) {
       ctx.beginPath();
       ctx.moveTo(xpos, ypos);
-      if (mapArray[i][j] === true) {
-        ctx.fillStyle = "#535c68";
-        ctx.fillRect(xpos, ypos, offset, offset);
-      } else {
-        ctx.strokeStyle = "#000000";
-        ctx.strokeRect(xpos, ypos, offset, offset);
-      }
+
+      ctx.strokeStyle = "#000000";
+      ctx.strokeRect(xpos, ypos, offset, offset);
+
       /// Increment x pointer by 80px after every iteration
       xpos += offset;
     }
